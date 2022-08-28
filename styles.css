@@ -1,0 +1,11 @@
+
+.grid-container{
+    display: grid;
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+}
+
+.grid-element{
+    border: 1px solid blue;
+}
