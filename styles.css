@@ -1,3 +1,27 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid red;
+}
+
+
+.grid-size{
+    flex-grow:1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    border: 1px solid blue;
+    width: 300px;
+}
 
 .grid-container{
     display: grid;
@@ -7,5 +31,9 @@
 }
 
 .grid-element{
-    border: 1px solid blue;
+    
+}
+
+.grid-element-hover{
+    background-color: red;
 }
