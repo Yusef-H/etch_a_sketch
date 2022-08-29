@@ -7,20 +7,25 @@ body{
 }
 
 .title{
+    width: 500px;
     display: flex;
     flex-direction: row;
+    gap:10px;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
 }
 
-
+.color{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.color.input{
+    
+}
 .grid-size{
-    flex-grow:1;
-    flex-shrink: 1;
-    flex-basis: 100px;
-    border: 1px solid blue;
-    width: 300px;
+    width: 250px;
 }
 
 .grid-container{
@@ -35,5 +40,5 @@ body{
 }
 
 .grid-element-hover{
-    background-color: red;
+    
 }
