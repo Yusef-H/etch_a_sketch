@@ -22,7 +22,6 @@ function clearGrid(){
     }
 }
 
-
 /**
  * Create grid elements according to grid size to fill up
  * the grid.
@@ -114,11 +113,27 @@ function handleColor(){
 }
 
 /**
+ * This function handles restart button.
+ * Saves the current size and color.
+ */
+function handleRestartButton(){
+    const restartButton = document.querySelector('.restart-button');
+    const sizePicker = document.querySelector('.grid-size input');
+    const colorPicker = document.querySelector('.color input');
+    restartButton.addEventListener('click',()=>{
+        clearGrid();
+        createGrid(sizePicker.value);
+        updateColor(colorPicker.value);
+    })
+}
+
+/**
  * This function handles the grid updates of size and color.
  */
 function handleGrid(){
     handleSize();
     handleColor();
+    handleRestartButton();
 }
 
 createGrid(16, 'black');
