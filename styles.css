@@ -16,7 +16,7 @@ body{
     border-radius: 8px;
     gap:10px;
     justify-content: space-between;
-    align-items: center;
+    align-items:flex-start;
     background-color: #F7ECDE;
     border: 1px solid black;
 }
@@ -25,7 +25,7 @@ body{
     width: 250px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    
     justify-content: center;
     align-items: center;
 }

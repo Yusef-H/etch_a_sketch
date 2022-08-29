@@ -69,9 +69,10 @@ function createGrid(size){
     insertGridElements(gridElements);
 }
 
-function updateGridSize(size){
+function updateGridSize(size, currentColor){
     clearGrid();
     createGrid(size);
+    updateColor(currentColor);
 }
 
 /**
@@ -81,10 +82,11 @@ function updateGridSize(size){
 function handleSize(){
     const slider = document.querySelector('.grid-size input');
     const sizeElement = document.querySelector('.size');
+    const colorPicker = document.querySelector('.color input');
     sizeElement.textContent = slider.value;
     slider.oninput = () => {
         sizeElement.textContent = slider.value
-        updateGridSize(slider.value);
+        updateGridSize(slider.value, colorPicker.value);
     };    
 }
 
@@ -106,8 +108,7 @@ function updateColor(color){
  */
 function handleColor(){
     const colorPicker = document.querySelector('.color input');
-    const colorChangeButton = document.querySelector('.color-changer');
-    colorChangeButton.addEventListener('click',()=>{
+    colorPicker.addEventListener('change', ()=>{
         updateColor(colorPicker.value);
     })
 }
