@@ -1,6 +1,9 @@
 
 
-
+/**
+ * Initializes the drawing color.
+ * @param {Array} gridElements 
+ */
 function initializeColor(gridElements){
     gridElements.forEach((element)=>{
         element.addEventListener('mouseover', ()=>{
@@ -9,7 +12,10 @@ function initializeColor(gridElements){
     })
 }
 
-function restartGrid(){
+/**
+ * Clears the grid elements.
+ */
+function clearGrid(){
     const gridContainer = document.querySelector('.grid-container');
     while(gridContainer.hasChildNodes()){
         gridContainer.removeChild(gridContainer.lastChild);
@@ -45,6 +51,10 @@ function insertGridElements(gridElements){
     })
 }
 
+/**
+ * Partitions the grid evenly according to the size input.
+ * @param {Number} size 
+ */
 function partitionGridEvenly(size){
     const gridContainer = document.querySelector('.grid-container');
     gridContainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
@@ -61,10 +71,14 @@ function createGrid(size){
 }
 
 function updateGridSize(size){
-    restartGrid();
+    clearGrid();
     createGrid(size);
 }
 
+/**
+ * This function handles size of the grid.
+
+ */
 function handleSize(){
     const slider = document.querySelector('.grid-size input');
     const sizeElement = document.querySelector('.size');
@@ -72,10 +86,13 @@ function handleSize(){
     slider.oninput = () => {
         sizeElement.textContent = slider.value
         updateGridSize(slider.value);
-    };
-    return slider.value;    
+    };    
 }
 
+/**
+ * This function updates the drawing color according to input.
+ * @param {String} color 
+ */
 function updateColor(color){
     const gridElements = document.querySelectorAll('.grid-element');
     gridElements.forEach((element)=>{
@@ -85,20 +102,24 @@ function updateColor(color){
     })
 }
 
+/**
+ * This function handles the color of drawing.
+ */
 function handleColor(){
     const colorPicker = document.querySelector('.color input');
     const colorChangeButton = document.querySelector('.color-changer');
     colorChangeButton.addEventListener('click',()=>{
         updateColor(colorPicker.value);
     })
-    return colorPicker.value;
-    
 }
 
+/**
+ * This function handles the grid updates of size and color.
+ */
 function handleGrid(){
-    const sizeOfGrid = handleSize();
-    const colorChosen = handleColor();
-    createGrid(sizeOfGrid, colorChosen);
+    handleSize();
+    handleColor();
 }
 
+createGrid(16, 'black');
 handleGrid();
