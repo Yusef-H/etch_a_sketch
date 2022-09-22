@@ -1,11 +1,10 @@
 var mouseDownFlag = false;
 
 function mouseUpDownListeners(){
-    const html = document.querySelector('html');
-    html.addEventListener('mousedown', ()=>{
+    document.addEventListener('pointerdown', ()=>{
         mouseDownFlag = true;
     })
-    html.addEventListener('mouseup', ()=>{
+    document.addEventListener('pointerup', ()=>{
         mouseDownFlag = false;
     })
 }
@@ -17,7 +16,7 @@ function mouseUpDownListeners(){
  */
 function initializeColor(gridElements){
     gridElements.forEach((element)=>{
-        element.addEventListener('mouseover', ()=>{
+        element.addEventListener('pointermove', ()=>{
             if(mouseDownFlag === true){
                 element.style.backgroundColor = 'black'; //Initial drawing color
             }
@@ -110,7 +109,7 @@ function handleSize(){
 function updateColor(color){
     const gridElements = document.querySelectorAll('.grid-element');
     gridElements.forEach((element)=>{
-        element.addEventListener('mouseover', ()=>{
+        element.addEventListener('pointermove', ()=>{
             if(mouseDownFlag === true)
                 element.style.backgroundColor = color;
         })
