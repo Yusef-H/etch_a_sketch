@@ -1,12 +1,20 @@
 var mouseDownFlag = false;
+var touchFlag = false;
 
 function mouseUpDownListeners(){
     document.addEventListener('pointerdown', ()=>{
         mouseDownFlag = true;
     })
+    document.addEventListener('touchstart', ()=>{
+        touchFlag = true;
+    })
     document.addEventListener('pointerup', ()=>{
         mouseDownFlag = false;
     })
+    document.addEventListener('touchend', ()=>{
+        touchFlag = false;
+    })
+
 }
 
 
@@ -18,6 +26,11 @@ function initializeColor(gridElements){
     gridElements.forEach((element)=>{
         element.addEventListener('pointermove', ()=>{
             if(mouseDownFlag === true){
+                element.style.backgroundColor = 'black'; //Initial drawing color
+            }
+        })
+        element.addEventListener('touchmove', ()=>{
+            if(touchFlag === true){
                 element.style.backgroundColor = 'black'; //Initial drawing color
             }
         })
@@ -111,6 +124,10 @@ function updateColor(color){
     gridElements.forEach((element)=>{
         element.addEventListener('pointermove', ()=>{
             if(mouseDownFlag === true)
+                element.style.backgroundColor = color;
+        })
+        element.addEventListener('touchmove', ()=>{
+            if(touchFlag === true)
                 element.style.backgroundColor = color;
         })
     })
