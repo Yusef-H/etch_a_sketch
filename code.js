@@ -1,3 +1,14 @@
+var mouseDownFlag = false;
+
+function mouseUpDownListeners(){
+    const html = document.querySelector('html');
+    html.addEventListener('mousedown', ()=>{
+        mouseDownFlag = true;
+    })
+    html.addEventListener('mouseup', ()=>{
+        mouseDownFlag = false;
+    })
+}
 
 
 /**
@@ -7,7 +18,9 @@
 function initializeColor(gridElements){
     gridElements.forEach((element)=>{
         element.addEventListener('mouseover', ()=>{
-            element.style.backgroundColor = 'black'; //Initial drawing color
+            if(mouseDownFlag === true){
+                element.style.backgroundColor = 'black'; //Initial drawing color
+            }
         })
     })
 }
@@ -98,7 +111,8 @@ function updateColor(color){
     const gridElements = document.querySelectorAll('.grid-element');
     gridElements.forEach((element)=>{
         element.addEventListener('mouseover', ()=>{
-            element.style.backgroundColor = color;
+            if(mouseDownFlag === true)
+                element.style.backgroundColor = color;
         })
     })
 }
@@ -128,6 +142,9 @@ function handleRestartButton(){
     })
 }
 
+
+
+
 /**
  * This function handles the grid updates of size and color.
  */
@@ -137,5 +154,6 @@ function handleGrid(){
     handleRestartButton();
 }
 
+mouseUpDownListeners();
 createGrid(16, 'black');
 handleGrid();
